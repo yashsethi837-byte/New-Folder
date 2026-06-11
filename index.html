@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="./index.css" />
+
+    <title>Information Visualization Project</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+  </head>
+  <body>
+    <div class="main-div">
+      <h1 class="project-heading">Information Visualization Project</h1>
+      <h2 class="project-name">All India level Production of Milk from 2000 to 2015</h2>
+      <h5>(*Data of 2012 isn't available)</h5>
+      <h3>Line Chart:</h3>
+      <!-- Printing the Line Chart -->
+    <svg  height="450" width="800" >
+        <g id="drawspace" style="transform : translate(75px,50px)"></g>
+    </svg>
+      <br>
+      <h3 >BarPlot:</h3>
+      <!-- Printing the BarPlot -->
+      <div id = "my_dataviz"></div>
+    </div>
+    <!-- Loading the d3.js Library -->
+     <script src="https://d3js.org/d3.v6.min.js"></script> 
+    <!-- File containg the d3 code to line chart -->
+     <script src="./LineChart.js"></script> 
+    <!-- File containg the d3 code to BarPlot -->
+    <!-- Scroll down in the Webpage to see the barplot -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="./BarPlot.js"></script>
+    
+  </body>
+</html>

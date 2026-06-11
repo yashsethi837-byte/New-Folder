@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus Flow</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="background-gradient"></div>
+
+    <main class="app-container">
+        <header class="app-header">
+            <h1>Focus Flow</h1>
+        </header>
+
+        <div class="glass-panel">
+            <div class="mode-selector">
+                <button class="mode-btn active" data-mode="focus">Focus</button>
+                <button class="mode-btn" data-mode="shortBreak">Short Break</button>
+                <button class="mode-btn" data-mode="longBreak">Long Break</button>
+            </div>
+
+            <div class="timer-display">
+                <div class="time-adjust">
+                    <button id="adjustUp" class="adjust-btn" aria-label="Increase time">+</button>
+                    <span id="minutes">25</span>
+                    <button id="adjustDown" class="adjust-btn" aria-label="Decrease time">-</button>
+                </div>
+                <span class="colon">:</span><span id="seconds">00</span>
+            </div>
+
+            <div class="controls">
+                <button id="startBtn" class="control-btn primary">Start</button>
+                <button id="pauseBtn" class="control-btn secondary hidden">Pause</button>
+                <button id="resetBtn" class="control-btn icon" aria-label="Reset">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                        <path d="M3 3v5h5" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="ambience-controls">
+            <button class="ambience-btn" data-sound="rain">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" />
+                    <path d="M16 14v6" />
+                    <path d="M8 14v6" />
+                    <path d="M12 16v6" />
+                </svg>
+                Rain
+            </button>
+            <button class="ambience-btn" data-sound="forest">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M8 10V4a4 4 0 0 1 8 0v6" />
+                    <path d="M12 2v18" />
+                    <path d="M12 22s5-4 5-9V4a5 5 0 0 0-10 0v9c0 5 5 9 5 9z" />
+                </svg>
+                Forest
+            </button>
+        </div>
+    </main>
+
+    <audio id="audio-rain" loop src="https://upload.wikimedia.org/wikipedia/commons/2/22/Sound_of_rain.ogg"></audio>
+    <audio id="audio-forest" loop src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Birds_forest.ogg"></audio>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

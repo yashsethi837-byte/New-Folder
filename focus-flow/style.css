@@ -1,0 +1,255 @@
+:root {
+    --bg-dark: #0f1115;
+    --text-primary: #ffffff;
+    --text-secondary: #a1a1aa;
+    --accent-focus: #818cf8;
+    --accent-short: #34d399;
+    --accent-long: #60a5fa;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-highlight: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.background-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 0%, #1e1e24 0%, var(--bg-dark) 70%);
+    z-index: -1;
+}
+
+.app-container {
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+.app-header h1 {
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+    opacity: 0.8;
+    font-size: 1.5rem;
+}
+
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 40px 20px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.mode-selector {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 5px;
+    border-radius: 100px;
+    display: inline-flex;
+}
+
+.mode-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    padding: 8px 16px;
+    border-radius: 100px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.mode-btn:hover {
+    color: var(--text-primary);
+}
+
+.mode-btn.active {
+    background: var(--glass-highlight);
+    color: var(--text-primary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.timer-display {
+    font-size: 6rem;
+    font-weight: 600;
+    line-height: 1;
+    margin: 20px 0 40px;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -2px;
+    text-shadow: 0 0 30px rgba(129, 140, 248, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.time-adjust {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.adjust-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.2s ease;
+    padding: 0 10px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.timer-display:hover .adjust-btn,
+body.paused .adjust-btn,
+body:not(.running) .adjust-btn {
+    opacity: 0.5;
+}
+
+.adjust-btn:hover {
+    opacity: 1 !important;
+    color: var(--text-primary);
+    transform: scale(1.2);
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.control-btn {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.control-btn.primary,
+.control-btn.secondary {
+    padding: 12px 32px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    min-width: 120px;
+}
+
+.control-btn.primary {
+    background: var(--text-primary);
+    color: var(--bg-dark);
+}
+
+.control-btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -5px rgba(255, 255, 255, 0.2);
+}
+
+.control-btn.secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    border: 1px solid var(--glass-border);
+}
+
+.control-btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.control-btn.icon {
+    background: transparent;
+    color: var(--text-secondary);
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.control-btn.icon:hover {
+    color: var(--text-primary);
+    background: var(--glass-highlight);
+}
+
+.hidden {
+    display: none;
+}
+
+.ambience-controls {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.ambience-btn {
+    background: transparent;
+    border: 1px solid var(--glass-border);
+    color: var(--text-secondary);
+    padding: 8px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.ambience-btn:hover {
+    border-color: var(--text-secondary);
+    color: var(--text-primary);
+}
+
+.ambience-btn.active {
+    background: var(--glass-highlight);
+    border-color: transparent;
+    color: var(--text-primary);
+}
+
+/* Dynamic Accent Colors */
+body[data-mode="focus"] .timer-display {
+    color: var(--accent-focus);
+    text-shadow: 0 0 30px rgba(129, 140, 248, 0.2);
+}
+
+body[data-mode="shortBreak"] .timer-display {
+    color: var(--accent-short);
+    text-shadow: 0 0 30px rgba(52, 211, 153, 0.2);
+}
+
+body[data-mode="longBreak"] .timer-display {
+    color: var(--accent-long);
+    text-shadow: 0 0 30px rgba(96, 165, 250, 0.2);
+}
